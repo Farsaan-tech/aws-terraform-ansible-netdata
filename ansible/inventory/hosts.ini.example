@@ -1,0 +1,10 @@
+# Example only. Terraform generates hosts.ini after apply.
+# Replace example addresses and SSH key path before use.
+[frontend]
+203.0.113.20 ansible_user=ec2-user ansible_ssh_private_key_file=~/.ssh/pipeline_key
+
+[backend]
+203.0.113.21 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/pipeline_key
+
+[all:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=accept-new'

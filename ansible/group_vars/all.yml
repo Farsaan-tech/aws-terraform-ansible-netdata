@@ -1,0 +1,6 @@
+---
+# The source PDF disabled SELinux and firewalld/UFW. This improved baseline
+# intentionally leaves host firewalls enabled and does not disable SELinux.
+nginx_listen_port: 80
+netdata_port: 19999
+netdata_bind_to: "0.0.0.0"

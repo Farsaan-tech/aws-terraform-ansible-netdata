@@ -1,0 +1,14 @@
+flowchart TB
+  Client[Browser / HTTP client] -->|TCP 80| FE[Frontend EC2
+Amazon Linux 2023
+Nginx reverse proxy]
+  FE -->|TCP 19999
+allowed from frontend SG only| BE[Backend EC2
+Ubuntu 22.04 LTS
+Netdata]
+  Operator[Engineer / Ansible control node] -->|SSH from admin CIDR| FE
+  Operator -->|SSH from admin CIDR| BE
+  TF[Terraform] -->|provisions| FE
+  TF -->|provisions| BE
+  TF -->|generates| INV[Ansible inventory]
+  INV --> Operator

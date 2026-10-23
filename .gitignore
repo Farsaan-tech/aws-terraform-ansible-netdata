@@ -1,0 +1,33 @@
+# Terraform state, plans, and local variables
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+terraform.tfvars
+terraform.tfvars.json
+override.tf
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Generated inventory and secrets
+ansible/inventory/hosts.ini
+*.pem
+*.key
+id_rsa*
+.aws/
+
+# Python / Ansible
+__pycache__/
+*.py[cod]
+.retry/
+.ansible/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

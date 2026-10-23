@@ -1,0 +1,22 @@
+---
+- name: Install Netdata package from configured OS repositories
+  ansible.builtin.apt:
+    name: netdata
+    state: present
+    update_cache: true
+  when: ansible_facts['os_family'] == 'Debian'
+
+- name: Configure Netdata to listen on all interfaces within the instance
+  ansible.builtin.lineinfile:
+    path: /etc/netdata/netdata.conf
+    regexp: '^\s*bind to ='
+    line: '        bind to = {{ netdata_bind_to }}'
+    insertafter: '^\[web\]'
+    create: false
+  notify: Restart Netdata
+
+- name: Ensure Netdata is enabled and running
+  ansible.builtin.service:
+    name: netdata
+    state: started
+    enabled: true
